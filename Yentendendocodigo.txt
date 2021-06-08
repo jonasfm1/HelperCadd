@@ -1,0 +1,64 @@
+Entendendo o Fluxo da Aplicação
+*IMPORTANTE RESAOLTAR QUE O NOME DAS PASTA SEMPRE ESTÃO COM TODAS LETRAS MINUSCULAS
+
+
+Node_Modules: NESTA PASTA FICA OS MODULOS PARA IMPORTAÇÃO E USO.
+
+Public: DENTRO DESTA PASTA TEMO NOSSO INDEX.HTML.
+
+Src: DENTRO DESTA PASTA ESTA OUTRAS SUBPASTA CONTENDO TODO O CODIGO DA APLICAÇÂO.
+  
+  Pages: DENTRO DESTA PAGE EXISTE UMA PASTA PARA CADA PAGINA 
+    E PARA CADA PAGINA UM INDEX.TSX .
+  
+  Routes: NESTA PASTA TEREMOS UM ARQUIVO INDEX.TSX APONTANDO PARA AS ROTAS OU ROTA.
+
+  --inddex.tsx : ESTE É UM ARQUIVO SOLTO NA RAIZ DO PROJETO, ELE ESCOLHE UM ELEMENTO E,
+      RENDERIZA O COMPONETE REACT.JS CHAMADO, NESTE CASO <App /> 
+
+        ReactDOM.render(
+          <React.StrictMode>
+            <App />
+          </React.StrictMode>,
+          document.getElementById('general')
+        );
+
+
+  --App.tsx : ESTE ARQUIVO E UMA FUNÇÂO COMPONETE REACT.JS <App />, QUE ESTA INVOCANDO OUTRA
+      FUNÇÂO COMPONETE RESPONSAVEL POR GERAR UMA ROTA.
+
+      const App: React.FC = () => (
+        <BrowserRouter>
+          <Routes />
+        </BrowserRouter>
+      )
+      export default App;
+
+
+Routes>index.tsx: ESTE ARQUIVO É RESPONSAVEL POR CAPTURAR A ROTA E DEVOLVER O COMPONETES 
+  QUE ESTA SENDO CHAMADO NESTE CASO "component={Dashborad}"
+
+    const Routes: React.FC = () =>{
+      return (
+        <Switch>
+          <Route path="/HelperCadd" exact component={Dashborad}/>
+        </Switch>
+      );
+    }
+    export default Routes;
+
+
+Pages>Dashborad>Index.tsx: NESTE ARQUIVO ENCONTRA-SE O COMPONETE DASHBOARD ANTES CHAMADO
+  PELO ARQUIVO routes>index.tsx INFORMANDO A ROTA /HelperCadd
+    const Dashborad: React.FC = () => {
+      return (
+        Aqui componete escrito em html com sintax React exempo: "
+          <nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor: "#589bd4"}}>
+            <li className="nav-item">
+              <a className="nav-link disabled" href="#" tabIndex={-1} aria-disabled="true">Disabled</a>
+            </li>
+          </nav> "
+      );
+
+Conluido: SOLTO NA RAIZ o index.tsx CHAMA O App.tsx QUE CHAMA O route/index.tsx QUE POR FIM
+  CHAMA O pages/Dashborad/index.tsx ENTAO ELE RETORNA UM COMPONETE
