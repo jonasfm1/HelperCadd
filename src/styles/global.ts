@@ -1,6 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
+  body {
+    background-color: #F0F0F5;
+  }
   *,
   #general {
     margin: 0;
@@ -9,11 +12,14 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body {
-    background-color: #F0F0F5;
-  }
   #container{
     width: 100%;
     height: 100%;
+    padding: 0;
+    margin: 0;
   }
+  nav {
+    padding: 0px 0px 0px 5px;
+  }
+
 `;
